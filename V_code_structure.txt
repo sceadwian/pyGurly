@@ -1,0 +1,105 @@
+
+
+import os
+import csv
+import random
+
+Define a function to read the character's information from the CSV file and display it in a table:
+
+
+def display_character_stats(character_name):
+    with open(f"{character_name}.csv", "r") as f:
+        reader = csv.reader(f)
+        stats = list(reader)
+    # Display character's stats in a table
+    print("Character stats:")
+    for row in stats:
+        print("{:<20}{:>10}".format(row[0], row[1]))
+    print()
+
+Define a function to list available levels from the "map_" files in a folder:
+
+
+def list_levels():
+    levels = []
+    for file_name in os.listdir():
+        if file_name.startswith("map_"):
+            levels.append(file_name)
+    # Display available levels
+    print("Available levels:")
+    for i, level in enumerate(levels):
+        print(f"{i+1}. {level}")
+    print()
+    return levels
+
+Define a function to load a level from a file:
+
+
+def load_level(level_file):
+    with open(level_file, "r") as f:
+        level = f.read()
+    # Display loaded level
+    print("Level loaded:")
+    print(level)
+    print()
+    return level
+
+Define a function to simulate combat between player and opponent:
+
+
+def combat_loop(player_stats, opponent_stats):
+    # Initialize combat variables
+    round_num = 1
+    player_hp = int(player_stats[1])
+    opponent_hp = int(opponent_stats[1])
+    while player_hp > 0 and opponent_hp > 0:
+        # Display combat information
+        print(f"Round {round_num}:")
+        print(f"Player HP: {player_hp}")
+        print(f"Opponent HP: {opponent_hp}")
+        # Prompt player for action
+        action = input("What action do you want to take? ")
+        # Calculate damage and defense based on action
+        # ...
+        # Update HP values
+        player_hp -= opponent_damage
+        opponent_hp -= player_damage
+        round_num += 1
+    # Determine winner
+    if player_hp > 0:
+        print("You won the combat!")
+        return True
+    else:
+        print("You lost the combat.")
+        return False
+
+Define a function to update the character's CSV file with new information:
+
+
+def update_character_stats(character_name, xp, new_action):
+    with open(f"{character_name}.csv", "r") as f:
+        reader = csv.reader(f)
+        stats = list(reader)
+    # Update XP and action
+    stats[3][1] = str(int(stats[3][1]) + xp)
+    stats[4][1] = new_action
+    with open(f"{character_name}.csv", "w", newline='') as f:
+        writer = csv.writer(f)
+        writer.writerows(stats)
+    print("Character stats updated.")
+
+Define the main function to run the game:
+
+
+def main():
+    # Prompt player to choose a character
+    character_name = input("Enter your character name: ")
+    display_character_stats(character_name)
+    # List available levels
+    levels = list_levels()
+    # Prompt player to choose a level
+    level_num = int(input("Enter the number of the level you want to play: "))
+    level_file = levels[level_num-1]
+    level = load_level(level_file)
+    # Simulate combat loops
+    for i in range(2):
