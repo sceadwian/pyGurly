@@ -1,7 +1,7 @@
 # pyGurly
 Primeiro Projeto em Python usando GitHub
 
-
+-=-=-=-=-=-
 Game design
 
 Select character
@@ -54,6 +54,7 @@ Action takes certain amount of stamina but +1 recovered p/ round.
 Each character has many attributes
 Attributes used to execute different attacks
 Attack's efficacy based
+-=-=-=-=-=-
 
 interesting idea combat mechanics
 https://boardgamegeek.com/thread/2119138/most-fun-combat-mechanics
