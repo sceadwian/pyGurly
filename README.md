@@ -11,7 +11,9 @@ Shows character profile -> select  level you would like to play
 Levels shown based on reading the folder for any files that start with the work map_01-Level 1
 
 Levels  <- available to be loaded as CSV files with first ??? lines being the map and the last ??? lines define different aspects of map such as loot and mobs?
-        opt. potentially make this into a text based game perhaps???
+        opt. potentially make this into a text based game perhaps??? I think this is actually what i'll do for now. Maybe later on we can add so that instead of selecting it through text, we actually have little csv maps we can use.
+        
+Once player picks the level, there are 3 battles. Battle 1 and battle 2 are given to the player randomly from a list of potential foes. There should be a list of mobs for these types of fights and then battle 3 is against the boss
 
 
 Character
@@ -25,7 +27,7 @@ size = (mix of height and weight) - small stature good for some things like avoi
 xp = 0
 hp = 100
 stam = 5
-mana = 5
+magk = 5
 agil = 5
 defc = 5
 jump = 5
@@ -33,7 +35,7 @@ jump = 5
 
 Combat
 
-Each roun each character picks an action
+Each round each character picks an action from a list that he/she has been building up through battles
 --> action (-stam, damage, block)
 --> Block (1,0,defc)
 --> Bash
@@ -43,6 +45,7 @@ Each roun each character picks an action
 --> Roundhouse kick
 --> Rest Block (recovers +2 stam)
 --> Recover (recovers +1 stam)
+--> heal (recovers +1 stam +? HP)
 
 
 
