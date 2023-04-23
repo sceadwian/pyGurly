@@ -1,2 +1,67 @@
 # pyGurly
 Primeiro Projeto em Python usando GitHub
+
+
+Game design
+
+Select character
+Characters <- saved in a CSV file . File name should be "character_name.txt" based on name of character
+
+Shows character profile -> select  level you would like to play
+Levels shown based on reading the folder for any files that start with the work map_01-Level 1
+
+Levels  <- available to be loaded as CSV files with first ??? lines being the map and the last ??? lines define different aspects of map such as loot and mobs?
+        opt. potentially make this into a text based game perhaps???
+
+
+Character
+
+name,cut,bleed,blunt,poison,curse,fire,P-def,M-def,ATK,HP
+
+name = Toon
+height = 
+weight = 
+size = (mix of height and weight) - small stature good for some things like avoiding attacks, but being tall should have some benefit in some of the attacks
+xp = 0
+hp = 100
+stam = 5
+mana = 5
+agil = 5
+defc = 5
+jump = 5
+
+
+Combat
+
+Each roun each character picks an action
+--> action (-stam, damage, block)
+--> Block (1,0,defc)
+--> Bash
+--> Punch
+--> Defensive Punch
+--> Kick
+--> Roundhouse kick
+--> Rest Block (recovers +2 stam)
+--> Recover (recovers +1 stam)
+
+
+
+Action is resolved delivering damage to each fighter
+Action takes certain amount of stamina but +1 recovered p/ round.
+Each character has many attributes
+Attributes used to execute different attacks
+Attack's efficacy based
+
+interesting idea combat mechanics
+https://boardgamegeek.com/thread/2119138/most-fun-combat-mechanics
+Matt Price
+@mattprice
+Dec 26, 2018
+A simple system that I've recently discovered is that in Dungeon Degenerates. I've not seen it implemented elsewhere.
+The attacker makes one roll vs. the defender (monsters in the game, there is no PvP) using standard d6s. Two d6 are one color (attack), two are another (defense) and there are up to two more ("power"). In order to hit the monster, your attack dice must be equal to or below a value (typically your hero's strength, but this depends on the weapon being used) and similarly, in order to block incoming hits your defense roll must also be equal to or below a value (typically agility, but this can also vary). What's neat is that one die's value of the resultant roll is the damage delivered (attack) or resisted (defense). So you want to roll low to pass your check, but you'd like one die's value to be high, so you block lots or delivery a good smackdown.
+Now add to this your stance at the outset. If you choose a guarded stance, you add one power die. That die may be used as part of your defense roll (essentially, you swap it out for one of the other two) to give you a better chance to defend. Or if you choose an assault stance, you do the same but with your attack roll.
+Some magical weapons or conditions allow you to roll two power dice, and create an optimal roll using four attack or defense dice.
+There's a bit more to it, but overall that's it and it's super neat. And once you get it down, it goes very quickly: it's just declaring your stance, and rolling your dice.
+(I think the rules are available online or on the BGG page for DD)
+
+
