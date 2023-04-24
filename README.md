@@ -15,7 +15,7 @@ Levels  <- available to be loaded as CSV files with first ??? lines being the ma
         
 Once player picks the level, there are 3 battles. Battle 1 and battle 2 are given to the player randomly from a list of potential foes. There should be a list of mobs for these types of fights and then battle 3 is against the boss
 
-
+-=-=-=-=-=-
 Character
 
 name,cut,bleed,blunt,poison,curse,fire,P-def,M-def,ATK,HP
@@ -27,24 +27,34 @@ size = (mix of height and weight) - small stature good for some things like avoi
 xp = 0
 hp = 5
 stam = 5
+strg = 5
 magk = 5
 agil = 5
 defc = 5
 jump = 5
 
+Map / Level information
+stored in map_*.csv
+contains: level_name, level_loot_ID, boss_ID, mob1_ID, mob2_ID_mob3_ID, mob4_ID, mob5_ID, mob6_ID
 
+level_loot_ID <-- draw from level_actions.csv
+boss_ID <-- draw from level_boss.csv
+mob1_ID <-- draw from level_mob.csv
+
+-=-=-=-=-=-
 Combat
 
 Each round each character picks an action from a list that he/she has been building up through battles
---> action (-stam, damage, block)
---> Block (1,0,defc)
---> Bash
+
+--> action (-stam, damage, block, heal)
 --> Punch
---> Defensive Punch
 --> Kick
---> Roundhouse kick
---> Rest Block (recovers +2 stam)
+--> Block (1,0,defc)
 --> Recover (recovers +1 stam)
+--> Bash
+--> Rest Block (recovers +2 stam)
+--> Defensive Punch
+--> Roundhouse kick
 --> heal (recovers +1 stam +? HP)
 
 
@@ -55,7 +65,6 @@ Each character has many attributes
 Attributes used to execute different attacks
 Attack's efficacy based
 -=-=-=-=-=-
-
 interesting idea combat mechanics
 https://boardgamegeek.com/thread/2119138/most-fun-combat-mechanics
 Matt Price

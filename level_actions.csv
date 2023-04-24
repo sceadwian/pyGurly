@@ -1,0 +1,10 @@
+Punch,1,d6+strg,d6+defc,0,,5,5,,8,9,17
+Kick,2,d6+strg+agil,d6,0,,5,5,,12,2,7
+Block,1,defc,2*defc,0,,5,5,,5,10,15
+Recover,0,1,defc,0,,5,5,,1,5,
+Bash,1,d6+defc,2*defc,0,,5,5,,11,10,21
+Rest Block,0,1,2*defc,0,,5,5,,1,10,
+Defensive Punch,1,strg+defc,2*defc,0,,5,5,,10,10,20
+Roundhouse kick,2,2*strg,1,0,,5,5,,10,1,5.5
+heal,1,0,3*defc,magk+d6,,5,5,,0,15,15
+Magic Recovery,0,1,2*magk+defc,5,,5,5,,1,15,#DIV/0!

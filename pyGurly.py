@@ -10,7 +10,8 @@ def display_character_stats(character_name):
         character_reader = csv.reader(character_file)
         character_stats = next(character_reader)  # read only the first line of the file
     # Display character's stats in a table
-    labels = ["Name", "Height", "Weight", "Size", "XP", "HP", "Stam", "Magk", "Agil", "Defc", "Jump"]
+    labels = ["Name", "Height", "Weight", "Size", "XP", "HP", "Stam", "Strg" , "Magk", "Agil", "Defc", "Jump"]
+    #recently added STRG make sure things are still working
     print(f"\n{'-'*28}")
     print(f"|{labels[0]:<12} | {character_stats[0]:>10} |")
     print(f"{'-'*28}")
@@ -19,6 +20,9 @@ def display_character_stats(character_name):
     print(f"{'-'*28}\n")
 
 def list_levels(): 
+    # levels will be stored in CSV files
+    # each file will be organized as follows:
+    # level_name, level_loot_ID, boss_ID, mob1_ID, mob2_ID_mob3_ID, mob4_ID, mob5_ID, mob6_ID
     levels = []
     for file_name in os.listdir():
     # os.listdir() -> returns a list of all the files in the current directory
