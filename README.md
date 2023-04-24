@@ -18,6 +18,7 @@ Once player picks the level, there are 3 battles. Battle 1 and battle 2 are give
 -=-=-=-=-=-
 Character
 
+previous_py
 name,cut,bleed,blunt,poison,curse,fire,P-def,M-def,ATK,HP
 
 name = Toon
@@ -26,12 +27,13 @@ weight =
 size = (mix of height and weight) - small stature good for some things like avoiding attacks, but being tall should have some benefit in some of the attacks
 xp = 0
 hp = 5
-stam = 5
+stam = 10
 strg = 5
 magk = 5
 agil = 5
 defc = 5
 jump = 5
+
 
 Map / Level information
 stored in map_*.csv
@@ -46,7 +48,7 @@ Combat
 
 Each round each character picks an action from a list that he/she has been building up through battles
 
---> action (-stam, damage, block, heal)
+--> action (-stam, damage, block, protection ,heal)
 --> Punch
 --> Kick
 --> Block (1,0,defc)

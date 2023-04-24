@@ -49,8 +49,8 @@ def load_level(levels):
     return level_chosen
 
 
-display_character_stats("Toon")
 
+display_character_stats("Toon")
 levels = list_levels()
 chosen_level = load_level(levels)
 print("Level chosen:", chosen_level)
