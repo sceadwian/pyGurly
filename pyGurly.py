@@ -18,7 +18,7 @@ def display_character_stats(character_name):
         print(f"|{label:<12} | {stat:>10} |")
     print(f"{'-'*28}\n")
 
-def list_levels():
+def list_levels(): 
     levels = []
     for file_name in os.listdir():
     # os.listdir() -> returns a list of all the files in the current directory
@@ -31,7 +31,6 @@ def list_levels():
     print()
     return levels
 
-# write a function that asks user to select a level and then loads it
 def load_level(levels):   
     # Ask user to select a level
     while True:
@@ -42,15 +41,13 @@ def load_level(levels):
             break
         except ValueError:
             print("Invalid choice. Please try again.")
-    level_chosen = load_level(levels[level_choice-1])
-    return level
+    level_chosen = levels[level_choice-1]
+    return level_chosen
 
 
 display_character_stats("Toon")
 
-list_levels()
-
-levels = ["Level 1", "Level 2", "Level 3"]
+levels = list_levels()
 chosen_level = load_level(levels)
 print("Level chosen:", chosen_level)
 
