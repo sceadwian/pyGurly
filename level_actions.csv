@@ -8,3 +8,5 @@ Defensive Punch,1,strg+defc,2*defc,0,,5,5,,10,10,20
 Roundhouse kick,2,2*strg,1,0,,5,5,,10,1,5.5
 heal,1,0,3*defc,magk+d6,,5,5,,0,15,15
 Magic Recovery,0,1,2*magk+defc,5,,5,5,,1,15,#DIV/0!
+Levitate
+Air 
