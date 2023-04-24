@@ -32,7 +32,7 @@ def list_levels():
     return levels
 
 # write a function that asks user to select a level and then loads it
-def select_level(levels):   
+def load_level(levels):   
     # Ask user to select a level
     while True:
         try:
@@ -42,16 +42,15 @@ def select_level(levels):
             break
         except ValueError:
             print("Invalid choice. Please try again.")
-    # Load selected level
-    level = load_level(levels[level_choice-1])
+    level_chosen = load_level(levels[level_choice-1])
     return level
-
-
-
-
-
 
 
 display_character_stats("Toon")
 
 list_levels()
+
+levels = ["Level 1", "Level 2", "Level 3"]
+chosen_level = load_level(levels)
+print("Level chosen:", chosen_level)
+
