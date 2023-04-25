@@ -1,6 +1,8 @@
 # pyGurly
 Primeiro Projeto em Python usando GitHub
 
+![Openfoot logo](images/alice.jpg)
+
 -=-=-=-=-=-
 Game design
 
