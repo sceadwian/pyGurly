@@ -105,7 +105,10 @@ def combat_loop(player_stats, enemy_stats):
         return "Enemy"
     else:
         print("You won the battle!")
-        xp_gain = 50 # fixed XP gain for winning
+        xp_gain = 50 # fixed XP gain for winning - XP should be one of the values pulled from the csv file need to add that.
+        #maybe i can use the same structure for mobs as the csv file for players, but instead of height and weight being there which
+        #I intend to use to calculate size. instead that's where the, xp and loot info comes in... 
+        # maybe petty mobs will drop crappy actions and bosses drop the good actions
         new_action = None # placeholder for action to be gained
         if round_num == 4: # boss fight
             xp_gain += 100 # extra XP for beating the boss
