@@ -6,17 +6,17 @@ def display_character_stats(character_name):
     # Load character stats from CSV file    
     with open(f"{character_name}.csv", "r") as character_file:
         character_reader = csv.reader(character_file)
-        character_stats = next(character_reader)  # read only the first line of the file
+        player_stats = next(character_reader)  # read only the first line of the file
     # Display character's stats in a table
-    labels = ["Name", "Height", "Weight", "Size", "XP", "HP", "Stam", "Strg" , "Magk", "Agil", "Defc", "Jump"]
+    labels = ["Name", "Height", "Weight", "Size", "XP", "HP", "Stam", "Strg" , "Magk", "Agil", "Defc", "Jump", "Act1", "Act2", "Act3", "Act4", "Act5"]
     #recently added STRG make sure things are still working
+    #Name,Height,Weight,Size,XP,HP,Stam,Strg,Magk,Agil,Defc,Jump,Act1,Act2,Act3,Act4,Act5
     print(f"\n{'-'*28}")
-    print(f"|{labels[0]:<12} | {character_stats[0]:>10} |")
+    print(f"|{labels[0]:<12} | {player_stats[0]:>10} |")
     print(f"{'-'*28}")
-    for label, stat in zip(labels[1:], character_stats[1:]):
+    for label, stat in zip(labels[1:], player_stats[1:]):
         print(f"|{label:<12} | {stat:>10} |")
     print(f"{'-'*28}\n")
-    #this function needs to return the character_stats list so that it can be used in the combat loop
     return player_stats
 
 
@@ -51,7 +51,7 @@ def load_level(levels):
 
 
 
-actions = []
+actions = [] # list of actions available to the player
 
 #Here, we load the available actions from the player's CSV file and display them to the player. The player is then prompted to choose an action by entering the corresponding number, and the chosen action is used in the combat loop.
 
@@ -64,7 +64,7 @@ def combat_loop(player_stats, enemy_stats):
     #load actions from player's CSV file
     with open(f"{player_stats[0]}.csv", "r") as f:
         reader = csv.reader(f)
-        actions = list(reader)[1][11:16] # get actions from the row containing player stats
+        actions = list(reader)[1][11:16] # get actions from the row containing player stats - Act1,Act2,Act3,Act4,Act5
     
     #combat loop
     while player_hp > 0 and enemy_hp > 0:
