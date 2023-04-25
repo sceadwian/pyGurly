@@ -50,49 +50,68 @@ def load_level(levels):
     return level_chosen
 
 
+
+actions = []
+
+#Here, we load the available actions from the player's CSV file and display them to the player. The player is then prompted to choose an action by entering the corresponding number, and the chosen action is used in the combat loop.
+
 def combat_loop(player_stats, enemy_stats):
     #initialize combat variables
     round_num = 1
     player_hp = int(player_stats[5])
     enemy_hp = int(enemy_stats[5])
+    
+    #load actions from player's CSV file
+    with open(f"{player_stats[0]}.csv", "r") as f:
+        reader = csv.reader(f)
+        actions = list(reader)[1][11:16] # get actions from the row containing player stats
+    
     #combat loop
     while player_hp > 0 and enemy_hp > 0:
         print(f"\nRound {round_num}!")
         print(f"Player HP: {player_hp} | Enemy HP: {enemy_hp}\n")
-        #choose action
+        
+        # display action options
+        print("Choose an action:")
+        for i, action in enumerate(actions):
+            print(f"{i+1}. {action}")
+        # prompt player for input
         while True:
-            try:
-                #change action to chosing one of 5 options
-
-
-
-#                action = int(input("Choose an action:\n1. Attack\n2. Defend\n3. Run\n"))
-#                if action < 1 or action > 3:
-#                    raise ValueError
-#                break
-#            except ValueError:
-#                print("Invalid choice. Please try again.")
-#        #player attacks
-#        if action == 1:
-#            player_attack = random.randint(1, int(player_stats[6]))
-#            enemy_hp -= player_attack
-#            print(f"You attack the enemy for {player_attack} damage!")
-#        #player defends
-#        elif action == 2:
-#            player_defense = random.randint(1, int(player_stats[10]))
-#            print(f"You defend yourself for {player_defense} damage!")
-
-
-#        #player attacks
-#        player_attack = random.randint(1, int(player_stats[6]))
-#        enemy_hp -= player_attack
-#        print(f"You attack the enemy for {player_attack} damage!")
-#        #enemy attacks
-#        enemy_attack = random.randint(1, int(enemy_stats[6]))
-#        player_hp -= enemy_attack
-#        print(f"The enemy attacks you for {enemy_attack} damage!")
-        #increment round number
+            choice = input("Enter the number of the action you want to use: ")
+            if choice.isdigit() and int(choice) in range(1, len(actions)+1):
+                break
+            else:
+                print("Invalid input. Please enter the number of the action you want to use.")
+        # use the chosen action
+        player_action = actions[int(choice)-1]
+        # calculate damage and defense
+        player_dmg = int(player_stats[7]) * random.uniform(0.8, 1.2) # stamina * random multiplier
+        enemy_def = int(enemy_stats[9]) * random.uniform(0.8, 1.2) # defense * random multiplier
+        enemy_dmg = int(enemy_stats[7]) * random.uniform(0.8, 1.2) - enemy_def # stamina * random multiplier - enemy defense
+        if enemy_dmg < 0:
+            enemy_dmg = 0
+        # update HP
+        player_hp -= enemy_dmg
+        enemy_hp -= player_dmg
+        # print round summary
+        print(f"\nYou used {player_action} and dealt {int(player_dmg)} damage.")
+        print(f"The enemy dealt {int(enemy_dmg)} damage.\n")
         round_num += 1
+        
+    # determine winner and update stats
+    if player_hp <= 0:
+        print("You lost the battle.")
+        update_character_stats(player_stats[0], 0, None) # update XP and action
+        return "Enemy"
+    else:
+        print("You won the battle!")
+        xp_gain = 50 # fixed XP gain for winning
+        new_action = None # placeholder for action to be gained
+        if round_num == 4: # boss fight
+            xp_gain += 100 # extra XP for beating the boss
+            new_action = "Super Move" # new action gained for beating the boss
+        update_character_stats(player_stats[0], xp_gain, new_action) # update XP and action
+        return "Player"
 
 
 
