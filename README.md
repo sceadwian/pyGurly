@@ -43,6 +43,8 @@ level_loot_ID <-- draw from level_actions.csv
 boss_ID <-- draw from level_boss.csv
 mob1_ID <-- draw from level_mob.csv
 
+mob_ID / boss_ID - name, height, weight, size, xp, hp, stam, strg, mgk, agil, dfc, jump,(then 5 id actions) maybe each mob will go through each of the actions in sequential order? mob actions maybe should be stored separately from the player actions? ... also should actions be stored in the main py or in support files?
+
 -=-=-=-=-=-
 Combat
 
