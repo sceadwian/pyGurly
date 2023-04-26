@@ -1,12 +1,39 @@
-Punch,1,d6+strg,d6+defc,0,0
-Kick,2,d6+strg+agil,d6,0,0
-Block,1,defc,2*defc,0,0
-Recover,0,1,defc,0,magk
-Bash,1,d6+defc,2*defc,0,magk*2defc
-Rest Block,0,1,2*defc,0,magk
-Defensive Punch,1,strg+defc,2*defc,0,0
-Roundhouse kick,2,2*strg+jump,1+jump,0,0
-heal,1,0,3*defc,magk+d6,0
-Magic Recovery,0,1,2*magk+defc,5,magk
-Levitate,2,d6+d6,magk+jump,0,2*magk
-Floating Dagger,2,d6+agil,2*agil,0,2*agil
+,Punch,1,,,,,,,,,,,,,,,
+,Kick,2,d6+strg+agil,,0,0,,,,,,,,,,,
+,Block,1,defc,2*defc,0,0,,,,,,,,,,,
+,Recover,0,1,defc,0,magk,,,,,,,,,,,
+,Bash,1,d6+defc,2*defc,0,magk*2defc,,,,,,,,,,,
+,Rest Block,0,1,2*defc,0,magk,,,,,,,,,,,
+,Defensive Punch,1,strg+defc,2*defc,0,0,,,,,,,,,,,
+,Roundhouse kick,2,2*strg+jump,1+jump,0,0,,,,,,,,,,,
+,heal,1,0,3*defc,magk+d6,0,,,,,,,,,,,
+,Magic Recovery,0,1,2*magk+defc,5,magk,,,,,,,,,,,
+,Levitate,2,d6+d6,magk+jump,0,2*magk,,,,,,,,,,,
+,Floating Dagger,2,d6+agil,2*agil,0,2*agil,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,Modifiers for each action,,,,,,,,,,,,,,,,modifier adds d6 for 6 or d20 for 20
+,Name,stam,strg,magk,agil,intl,defc,jump,Heal,Buff,Xstrg,Xmagk,Xagil,Xintl,Xdefc,Xjump,modifier
+1,Punch,1,strg,,,,,,,,,,,, -Xdefc, -Xjump,6
+2,Kick,2,strg,,agil,,,,,,,, -Xagil,, -Xdefc, -Xjump,10
+3,Block,1,,,,,,,Heal,,,,,,,,
+4,Recover,0,,,,,,,,,,,,,,,
+5,Bash,1,,,,,,,,,,,,,,,
+6,Rest Block,0,,,,,,,,,,,,,,,
+7,Defensive Punch,1,,,,,,,,,,,,,,,
+8,Roundhouse kick,2,,,,,,,,,,,,,,,
+9,heal,1,,,,,,,,,,,,,,,
+10,Magic Recovery,0,,,,,,,,,,,,,,,
+11,Levitate,2,,,,,,,,,,,,,,,
+12,Floating Dagger,2,,,,,,,,,,,,,,,
+13,,,,,,,,,,,,,,,,,
+14,,,,,,,,,,,,,,,,,
+15,,,,,,,,,,,,,,,,,
+16,,,,,,,,,,,,,,,,,
+17,,,,,,,,,,,,,,,,,
+18,,,,,,,,,,,,,,,,,
+19,,,,,,,,,,,,,,,,,
+20,,,,,,,,,,,,,,,,,
+21,,,,,,,,,,,,,,,,,
+22,,,,,,,,,,,,,,,,,
+23,,,,,,,,,,,,,,,,,
+24,,,,,,,,,,,,,,,,,
