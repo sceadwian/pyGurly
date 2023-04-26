@@ -8,9 +8,9 @@ def display_character_stats(character_name):
         character_reader = csv.reader(character_file)
         player_stats = next(character_reader)  # read only the first line of the file
     # Display character's stats in a table
-    labels = ["Name", "Height", "Weight", "Size", "XP", "HP", "Stam", "Strg" , "Magk", "Agil", "Defc", "Jump", "Act1", "Act2", "Act3", "Act4", "Act5"]
-    #recently added STRG make sure things are still working
-    #Name,Height,Weight,Size,XP,HP,Stam,Strg,Magk,Agil,Defc,Jump,Act1,Act2,Act3,Act4,Act5
+    labels = ["Name", "Height", "Weight", "Size", "XP", "HP", "Stam", "Strg" , "Magk", "Agil","Intl", "Defc", "Jump", "Act1", "Act2", "Act3", "Act4", "Act5"]
+    #recently added STRG make sure things are still working --> then added Intl
+    #Name,Height,Weight,Size,XP,HP,Stam,Strg,Magk,Agil,Intl,Defc,Jump,Act1,Act2,Act3,Act4,Act5
     print(f"\n{'-'*28}")
     print(f"|{labels[0]:<12} | {player_stats[0]:>10} |")
     print(f"{'-'*28}")
@@ -60,8 +60,9 @@ def combat_loop(player_stats, enemy_stats):
     round_num = 1
     player_hp = int(player_stats["HP"])
     enemy_hp = int(enemy_stats["HP"])
-    
     #load actions from player's CSV file -> player_stats[12:17] -> 
+    # q: should it be fixed to 13:18 since I added Intl?
+    # a: no, because the first index is 0, so 12:17 is correct
     player_actions = []
     for i in range(1, 6):
         action_id = int(player_stats[f"Act{i}"])
@@ -114,7 +115,11 @@ def combat_loop(player_stats, enemy_stats):
         print(f"\nYou used {player_action} and dealt {int(player_dmg)} damage.")
         print(f"The enemy dealt {int(enemy_dmg)} damage.\n")
         round_num += 1
-        
+    
+    #    fixed XP gain for winning - XP should be one of the values pulled from the csv file need to add that.
+        #maybe i can use the same structure for mobs as the csv file for players, but instead of height and weight being there which
+        #I intend to use to calculate size. instead that's where the, xp and loot info comes in... 
+        # maybe petty mobs will drop crappy actions and bosses drop the good actions
     # determine winner and update stats
     if player_hp <= 0:
         print("You lost the battle.")

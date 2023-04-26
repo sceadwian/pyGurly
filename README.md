@@ -33,17 +33,18 @@ stam = 10
 strg = 5
 magk = 5
 agil = 5
+intl = 5
 defc = 5
 jump = 5
 
 
 Map / Level information
 stored in map_*.csv
-contains: level_name, level_loot_ID, boss_ID, mob1_ID, mob2_ID_mob3_ID, mob4_ID, mob5_ID, mob6_ID
+contains: level_name, level_actions_ID, boss_ID, mob1_ID, mob2_ID_mob3_ID, mob4_ID, mob5_ID, mob6_ID
 
-level_loot_ID <-- draw from level_actions.csv
+level_actions_ID <-- draw from own_actions.csv
 mob_actions <-- stores actions used by mobs and bosses
-own_actions <-- stores actions available to users, maybe instead of level_actions.csv, I should just use this source file???
+own_actions <-- stores actions available to users, maybe instead of level_actions.csv, I should just use this as source file???
 boss_ID <-- draw from level_boss.csv
 mob1_ID <-- draw from level_mob.csv
 
