@@ -42,7 +42,7 @@ stored in map_*.csv
 contains: level_name, level_loot_ID, boss_ID, mob1_ID, mob2_ID_mob3_ID, mob4_ID, mob5_ID, mob6_ID
 
 level_loot_ID <-- draw from level_actions.csv
-npc_actions <-- stores actions used by mobs and bosses
+mob_actions <-- stores actions used by mobs and bosses
 own_actions <-- stores actions available to users, maybe instead of level_actions.csv, I should just use this source file???
 boss_ID <-- draw from level_boss.csv
 mob1_ID <-- draw from level_mob.csv
