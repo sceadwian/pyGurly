@@ -83,7 +83,8 @@ def combat_loop(player_stats, enemy_stats):
                 if int(row[0]) == action_id:
                     enemy_actions.append(row[1])
                     break
-    
+    # current idea is that we make damage/block based on adding components of 
+    # strg + mgk + agl + int + def + jmp - Xstr - xmgk - xagil - xintl - xdef
     #combat loop
     while player_hp > 0 and enemy_hp > 0:
         print(f"\nRound {round_num}!")
