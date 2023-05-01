@@ -1,7 +1,7 @@
 # pyGurly
 Primeiro Projeto em Python usando GitHub
 
-![Front Image](images/alice.jpg "Alice")
+![Front Image](./images/alice.jpg "Alice")
 
 -=-=-=-=-=-
 Game design
