@@ -56,33 +56,38 @@ actions = [] # list of actions available to the player
 #Here, we load the available actions from the player's CSV file and display them to the player. The player is then prompted to choose an action by entering the corresponding number, and the chosen action is used in the combat loop.
 
 def combat_loop(player_stats, enemy_stats):
+    actions_list = [
+        #stam,strg,magk,agil,intl,defc,jump,heal,buff,Xstrg,Xmagk,Xagil,Xintl,Xdefc,Xjump,d-modifier
+        [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6],  # action 1 - Punch
+        [2, 1, 0, 1, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 10],  # action 2 - Kick
+        [1, 0, 0, 0, 0, 0, 6, 1, 0, 0, 0, 0, 0, 0, 0, 10],  # action 3 - Block
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 4 - Recover
+        [1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 5 - Bash
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 6 - Rest Block
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 7 - Defensive Block
+        [2, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 8 - Roundhouse Kick
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 9 - Heal
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 10 - Magic Recovery
+        [2, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 11 - Levitate
+        [2, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 12 - Floating Daggers
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 13 - 
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 14 - 
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 15 - 
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 16 - 
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 17 - 
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 18 - 
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 19 - 
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 20 - 
+    ]
     #initialize combat variables
     round_num = 1
     player_hp = int(player_stats["HP"])
     enemy_hp = int(enemy_stats["HP"])
+
+    # ALL THE CSV loading was removed 20230430
     #load actions from player's CSV file -> player_stats[12:17] -> 
-    # q: should it be fixed to 13:18 since I added Intl?
-    # a: no, because the first index is 0, so 12:17 is correct
-    player_actions = []
-    for i in range(1, 6):
-        action_id = int(player_stats[f"Act{i}"])
-        with open("own_actions.csv", "r") as f:
-            reader = csv.reader(f)
-            for row in reader:
-                if int(row[0]) == action_id:
-                    player_actions.append(row[1])
-                    break
-    
-    #load actions from enemy's CSV file -> enemy_stats[12:17] -> 
-    enemy_actions = []
-    for i in range(1, 6):
-        action_id = int(enemy_stats[f"Act{i}"])
-        with open("mob_actions.csv", "r") as f:
-            reader = csv.reader(f)
-            for row in reader:
-                if int(row[0]) == action_id:
-                    enemy_actions.append(row[1])
-                    break
+
+
     # current idea is that we make damage/block based on adding components of 
     # strg + mgk + agl + int + def + jmp - Xstr - xmgk - xagil - xintl - xdef
     #combat loop
