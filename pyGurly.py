@@ -58,26 +58,26 @@ actions = [] # list of actions available to the player
 def combat_loop(player_stats, enemy_stats):
     actions_list = [
         #stam,strg,magk,agil,intl,defc,jump,heal,buff,Xstrg,Xmagk,Xagil,Xintl,Xdefc,Xjump,d-modifier
-        [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6],  # action 1 - Punch
-        [2, 1, 0, 1, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 10],  # action 2 - Kick
-        [1, 0, 0, 0, 0, 0, 6, 1, 0, 0, 0, 0, 0, 0, 0, 10],  # action 3 - Block
-        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 4 - Recover
-        [1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 5 - Bash
-        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 6 - Rest Block
-        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 7 - Defensive Block
-        [2, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 8 - Roundhouse Kick
-        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 9 - Heal
-        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 10 - Magic Recovery
-        [2, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],  # action 11 - Levitate
-        [2, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 12 - Floating Daggers
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 13 - 
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 14 - 
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 15 - 
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 16 - 
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 17 - 
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 18 - 
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 19 - 
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  # action 20 - 
+        [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 6],  # action 1 - Punch
+        [2, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 10],  # action 2 - Kick
+        [1, 0, 0, 0, 0, 0, 6, 1, 0, 0, 1, 0, 0, 1, 0, 10],  # action 3 - Block
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 6],  # action 4 - Recover
+        [2, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6],  # action 5 - Bash
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 6],  # action 6 - Rest Block
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 6],  # action 7 - Defensive Block
+        [2, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 10],  # action 8 - Roundhouse Kick
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 6],  # action 9 - Heal
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 6],  # action 10 - Magic Recovery
+        [2, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 6],  # action 11 - Levitate
+        [2, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 6],  # action 12 - Floating Daggers
+        [2, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 6],  # action 13 - Gaseous Punishment
+        [2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 10],  # action 14 - Copper Sword
+        [1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10],  # action 15 - Nunchucks
+        [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 6],  # action 16 - Copper Axe
+        [2, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 2, 0, 10],  # action 17 - Simple Hammer
+        [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 6],  # action 18 - Monster1
+        [1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 10],  # action 19 - Monster2
+        [2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 6],  # action 20 - Monster3
     ]
     #initialize combat variables
     round_num = 1
