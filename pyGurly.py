@@ -83,19 +83,11 @@ def combat_loop(player_stats, enemy_stats):
         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 10],  # action 19 - Monster2
         [2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 6],  # action 20 - Monster3
     ]
-   
-    #initialize combat variables
+       #initialize combat variables
     round_num = 1
     player_hp = int(player_stats[5])
     enemy_hp = int(enemy_stats[5])
 
-    # ALL THE CSV loading was removed 20230430
-    #load actions from player's CSV file -> player_stats[12:17] -> 
-
-
-    # current idea is that we make damage/block based on adding components of 
-    # strg + mgk + agl + int + def + jmp - Xstr - xmgk - xagil - xintl - xdef
-    #combat loop
     while player_hp > 0 and enemy_hp > 0:
         print(f"\nRound {round_num}!")
         print(f"Player HP: {player_hp} | Enemy HP: {enemy_hp}\n")
@@ -111,23 +103,22 @@ def combat_loop(player_stats, enemy_stats):
                   break
             else:
                 print("Invalid input. Please enter the number of the action you want to use.")
-        # use the chosen action
+        # use the chosen action - this isn't correct, need to use all these stats for both not half for each
         player_action = actions_list[int(choice)-1]
-
         player_dmg = (int(player_stats[6])
-                      + int(player_stats[7]) * player_action[int(choice)-1]["modifiers"][0]
-                      + int(player_stats[8]) * player_action[int(choice)-1]["modifiers"][1]
-                      + int(player_stats[9]) * player_action[int(choice)-1]["modifiers"][2]
-                      + int(player_stats[10]) * player_action[int(choice)-1]["modifiers"][3]
-                      + int(player_stats[11]) * player_action[int(choice)-1]["modifiers"][4]
-                      + int(player_stats[12]) * player_action[int(choice)-1]["modifiers"][5])
-        enemy_dmg = (int(enemy_stats[7]) * player_action[int(choice)-1]["modifiers"][6]
-                     + int(enemy_stats[8]) * player_action[int(choice)-1]["modifiers"][7]
-                     + int(enemy_stats[9]) * player_action[int(choice)-1]["modifiers"][8]
-                     + int(enemy_stats[10]) * player_action[int(choice)-1]["modifiers"][9]
-                     + int(enemy_stats[11]) * player_action[int(choice)-1]["modifiers"][10]
-                     + int(enemy_stats[12]) * player_action[int(choice)-1]["modifiers"][11])
-
+                          + int(player_stats[7]) * player_action[1]
+                          + int(player_stats[8]) * player_action[2]
+                          + int(player_stats[9]) * player_action[3]
+                          + int(player_stats[10]) * player_action[4]
+                          + int(player_stats[11]) * player_action[5]
+                          + int(player_stats[12]) * player_action[6])
+        enemy_dmg = (int(enemy_stats[7]) * player_action[9]
+                         + int(enemy_stats[8]) * player_action[10]
+                         + int(enemy_stats[9]) * player_action[11]
+                         + int(enemy_stats[10]) * player_action[12]
+                         + int(enemy_stats[11]) * player_action[13]
+                         + int(enemy_stats[12]) * player_action[14])
+        print (f"Player damage = {player_dmg} and Enemy damage = {enemy_dmg}")
         round_num += 1
     
     #    fixed XP gain for winning - XP should be one of the values pulled from the csv file need to add that.
