@@ -103,7 +103,7 @@ def combat_loop(player_stats, enemy_stats):
                   break
             else:
                 print("Invalid input. Please enter the number of the action you want to use.")
-        # use the chosen action - this isn't correct, need to use all these stats for both not half for each
+        # use the chosen action
         player_action = actions_list[int(choice)-1]
         player_dmg = (int(player_stats[6])
                           + int(player_stats[7]) * player_action[1]
@@ -112,53 +112,36 @@ def combat_loop(player_stats, enemy_stats):
                           + int(player_stats[10]) * player_action[4]
                           + int(player_stats[11]) * player_action[5]
                           + int(player_stats[12]) * player_action[6])
-        enemy_dmg = (int(enemy_stats[7]) * player_action[9]
+        player_dmg_blocked = (int(enemy_stats[7]) * player_action[9]
                          + int(enemy_stats[8]) * player_action[10]
                          + int(enemy_stats[9]) * player_action[11]
                          + int(enemy_stats[10]) * player_action[12]
                          + int(enemy_stats[11]) * player_action[13]
                          + int(enemy_stats[12]) * player_action[14])
-        print (f"Player damage = {player_dmg} and Enemy damage = {enemy_dmg}")
+        print (f"Player damage = {player_dmg} and Enemy damage = {player_dmg_blocked}")
+        enemy_dmg = (int(player_stats[6])
+                          + int(enemy_stats[7]) * player_action[1]
+                          + int(enemy_stats[8]) * player_action[2]
+                          + int(enemy_stats[9]) * player_action[3]
+                          + int(enemy_stats[10]) * player_action[4]
+                          + int(enemy_stats[11]) * player_action[5]
+                          + int(enemy_stats[12]) * player_action[6])
+        enemy_dmg_blocked = (int(player_stats[7]) * player_action[9]
+                         + int(player_stats[8]) * player_action[10]
+                         + int(player_stats[9]) * player_action[11]
+                         + int(player_stats[10]) * player_action[12]
+                         + int(player_stats[11]) * player_action[13]
+                         + int(player_stats[12]) * player_action[14])
+        print (f"Player damage = {enemy_dmg} and Enemy damage = {enemy_dmg_blocked}")
         round_num += 1
     
-    #    fixed XP gain for winning - XP should be one of the values pulled from the csv file need to add that.
-        #maybe i can use the same structure for mobs as the csv file for players, but instead of height and weight being there which
-        #I intend to use to calculate size. instead that's where the, xp and loot info comes in... 
-        # maybe petty mobs will drop crappy actions and bosses drop the good actions
+
     # determine winner and update stats
     if player_hp <= 0:
         print("You lost the battle.")
         update_character_stats(player_stats["Name"], 0, None) # update XP and action
         return "Enemy"
     
-
-#        if enemy_dmg < 0:
-#            enemy_dmg = 0
-#
-#        player_hp -= enemy_dmg
-#        enemy_hp -= player_dmg
-#        print(f"\nYou used {player_action} and dealt ", end="")
-#        if int(player_dmg) > 10:
-#            print(f"\033[32m{int(player_dmg)}\033[0m", end="")
-#        elif int(player_dmg) > 0:
-#            print(f"\033[33m{int(player_dmg)}\033[0m", end="")
-#        else:
-#            print("0", end="")
-#        print(" damage.")
-#        print(f"The enemy dealt ", end="")
-#        if int(enemy_dmg) > 10:
-#            print(f"\033[32m{int(enemy_dmg)}\033[0m", end="")
-#        elif int(enemy_dmg) > 0:
-#            print(f"\033[33m{int(enemy_dmg)}\033[0m", end="")
-#        else:
-#            print("0", end="")
-#        print(" damage.\n")
-#        round_num += 1
-#    if player_hp <= 0:
-#        print("You lost the battle.")
-#        update_character_stats(player_stats["Name"], 0, None)
-#        return "Enemy"
-
     else:
         print("You won the battle!")
         xp_gain = int(enemy_stats["XP"]) # XP gain for winning
