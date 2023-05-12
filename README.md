@@ -1,7 +1,7 @@
 # pyGurly
 Primeiro Projeto em Python usando GitHub
 
-![Front Image](images/alice.jpg "Alice")
+![Front Image](./images/alice.jpg "Alice")
 
 -=-=-=-=-=-
 Game design
@@ -42,7 +42,7 @@ Map / Level information
 stored in map_*.csv
 contains: level_name, level_actions_ID, boss_ID, mob1_ID, mob2_ID_mob3_ID, mob4_ID, mob5_ID, mob6_ID
 
-level_actions_ID <-- draw from own_actions.csv
+level_actions_ID <-- draw from own_actions.csv #20230430 should I just do away with mob/own actions and just have the actions live in the combat_loop?
 mob_actions <-- stores actions used by mobs and bosses
 own_actions <-- stores actions available to users, maybe instead of level_actions.csv, I should just use this as source file???
 boss_ID <-- draw from level_boss.csv
